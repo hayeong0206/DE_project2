@@ -15,7 +15,7 @@ function App() {
     formData.append("file", file);
 
     try {
-      const response = await fetch("http://localhost:8080/predict", {
+      const response = await fetch("https://de-project2-be.onrender.com/predict", {
         method: "POST",
         body: formData,
       });
