@@ -73,7 +73,7 @@ function App() {
       >
         <CardBody>
           <CardTitle tag="h3" className="text-center mb-4" style={{ color: '#007bff' }}>
-            🚧 위험도 예측기
+            위험도 예측기
           </CardTitle>
 
           <Input
@@ -131,7 +131,7 @@ function App() {
                       predict(new File([], imageName), image, imageName);
                     }}
                   >
-                    🔁 다시 예측하기
+                    다시 예측하기
                   </button>
                 </div>
               </>
@@ -153,7 +153,7 @@ function App() {
         >
           <CardBody>
             <CardTitle tag="h5" className="mb-3">
-              🏠 최근 예측 기록
+              최근 예측 기록
             </CardTitle>
             {history.map((item, index) => (
               <div key={index} className="mb-4">
