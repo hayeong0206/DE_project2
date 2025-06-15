@@ -33,13 +33,20 @@ function App() {
 
   const handleUpload = async (e) => {
     const file = e.target.files[0];
-    const imageUrl = URL.createObjectURL(file);
-    setImage(imageUrl);
-    setImageName(file.name);
-    setDanger(null);
-    setLoading(true);
-    await predict(file, imageUrl, file.name);
+    const reader = new FileReader();
+  
+    reader.onloadend = () => {
+      const imageUrl = reader.result;
+      setImage(imageUrl);
+      setImageName(file.name);
+      setDanger(null);
+      setLoading(true);
+      predict(file, imageUrl, file.name);
+    };
+  
+    reader.readAsDataURL(file);
   };
+  
 
   const getColor = (score) => {
     if (score >= 80) return "danger";
