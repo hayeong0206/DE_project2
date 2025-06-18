@@ -177,15 +177,15 @@ function App() {
             className="mb-3"
           />
 
-          <div style={{position:"relative", width:"100%", height:"300px"}} className="mb-3">
+          <div style={{position:"relative", width:"100%"}} className="mb-3">
             {image && <>
               <img
                 ref={imgRef}
                 src={image}
                 alt="preview"
                 style={{
-                  width:"100%", height:"100%",
-                  objectFit:"cover", borderRadius:"12px",
+                  width:"100%", height:"auto",
+                  objectFit:"contain", borderRadius:"12px",
                   opacity:loading?0.4:1, transition:"opacity 0.3s"
                 }}
               />
