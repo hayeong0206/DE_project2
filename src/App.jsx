@@ -30,7 +30,7 @@ function App() {
     const formData = new FormData();
     formData.append("file", file);
     try {
-      const res = await fetch("http://127.0.0.1:8000/predict", { method: "POST", body: formData });
+      const res = await fetch("https://781c-119-192-184-47.ngrok-free.app/predict", { method: "POST", body: formData });
       if (!res.ok) throw new Error(`서버 에러 ${res.status}`);
       const data = await res.json();
 
