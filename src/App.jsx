@@ -3,7 +3,7 @@ import Intro from "./components/Intro";
 import { Card, CardBody, CardTitle, Progress, Input, Button, ButtonGroup, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import History from "./HistoryItem";
 import NavBar from "./NavBar";
-import peopleImg from "./assets/poster.png";
+import peopleImg from "./assets/poster.jpg";
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
