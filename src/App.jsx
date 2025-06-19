@@ -30,7 +30,7 @@ function App() {
     const formData = new FormData();
     formData.append("file", file);
     try {
-      const res = await fetch("http://34.64.46.84:8000/predict", { method: "POST", body: formData });
+      const res = await fetch("https://34-22-81-152.nip.io/predict", { method: "POST", body: formData });
       if (!res.ok) throw new Error(`서버 에러 ${res.status}`);
       const data = await res.json();
 
