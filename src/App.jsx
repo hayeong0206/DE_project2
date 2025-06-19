@@ -1,9 +1,13 @@
 import React, { useState, useRef, useEffect, useLayoutEffect, useCallback } from "react";
+import Intro from "./components/Intro";
 import { Card, CardBody, CardTitle, Progress, Input, Button, ButtonGroup, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import History from "./HistoryItem";
 import NavBar from "./NavBar";
+import peopleImg from "./assets/poster.png";
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
+  const handleSplashFinished = () => setShowSplash(false);
   const [image, setImage] = useState(null);
   const [imageName, setImageName] = useState("");
   const [fullBlindRisk, setFullBlindRisk] = useState(null);
@@ -15,7 +19,7 @@ function App() {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const [mode, setMode] = useState('all');
-
+  
   const imgRef = useRef(null);
   const canvasRef = useRef(null);
   const [showWarning, setShowWarning] = useState(false);
@@ -195,6 +199,7 @@ function App() {
   useEffect(() => {
     drawOverlays();
   }, [drawOverlays]);
+ 
 
   const getColor = score => (score >= 80 ? "danger" : score >= 50 ? "warning" : "success");
   const displayBlind = fullBlindRisk != null && (mode === 'all' || mode === 'blind');
@@ -203,7 +208,7 @@ function App() {
   const showWeVal = fullWeRisk?.toFixed(1);
 
   return (
-    <div style={{ width: "100vw", minHeight: "100vh", backgroundColor: "#f0f4fa", display: "flex", flexDirection: "column", alignItems: "center", padding: "2rem", boxSizing: "border-box" }}>
+    <div style={{ position: "relative", width: "100vw", minHeight: "100vh", backgroundColor: "#f0f4fa", display: "flex", flexDirection: "column", alignItems: "center", padding: "2rem", boxSizing: "border-box" }}>
       <Modal isOpen={showWarning} toggle={toggleWarning}>
         <ModalHeader toggle={toggleWarning}>⚠️ 높은 위험도 경고</ModalHeader>
         <ModalBody>
@@ -291,6 +296,7 @@ function App() {
           </div>
         </CardBody>
       </Card>
+      
 
       {history.length > 0 && (
         <Card className="shadow mt-4" style={{ width: "100%", maxWidth: "600px", borderRadius: "20px", padding: "1.5rem" }}>
@@ -302,7 +308,15 @@ function App() {
           </CardBody>
         </Card>
       )}
+
+      {showSplash && (
+        <Intro
+          src={peopleImg}
+          onFinish={handleSplashFinished}
+        />
+      )}
     </div>
+    
   );
 }
 
